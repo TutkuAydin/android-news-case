@@ -10,28 +10,30 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.case1.api.Article
 
 class NewsAdapter(
-        private var titles: List<String>,
-        private var imagesUrl: List<String>,
-        private var descriptions: List<String>,
-        private var url: List<String>
+        private var articleList: List<Article>
 ) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val textTitle = itemView.findViewById(R.id.title) as TextView
-        val newsImage = itemView.findViewById(R.id.news_image) as ImageView
-        val textInfo = itemView.findViewById(R.id.info) as TextView
+        private val textTitle = itemView.findViewById(R.id.title) as TextView
+        private val newsImage = itemView.findViewById(R.id.news_image) as ImageView
+        private val textInfo = itemView.findViewById(R.id.info) as TextView
 
-        init {
+        fun bind(article: Article) {
             itemView.setOnClickListener { v: View ->
-                val position: Int = adapterPosition
-
                 val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(url[position])
+                intent.data = Uri.parse(article.url)
                 startActivity(itemView.context, intent, null)
             }
+            textTitle.text = article.title
+
+            Glide.with(newsImage) //nerede kullanacağız
+                    .load(article.urlToImage) //neyi yükleyeceğiz
+                    .into(newsImage) //nereye yükleyeceğiz
+            textInfo.text = article.description
         }
     }
 
@@ -41,17 +43,10 @@ class NewsAdapter(
     }
 
     override fun getItemCount(): Int {
-        return titles.size
+        return articleList.size
     }
 
-    override fun onBindViewHolder(holder: NewsAdapter.ViewHolder, position: Int) {
-
-        holder.textTitle.text = titles[position]
-
-        Glide.with(holder.newsImage) //nerede kullanacağız
-                .load(imagesUrl[position]) //neyi yükleyeceğiz
-                .into(holder.newsImage) //nereye yükleyeceğiz
-
-        holder.textInfo.text = descriptions[position]
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(articleList[position])
     }
 }

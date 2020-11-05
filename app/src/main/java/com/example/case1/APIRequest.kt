@@ -14,7 +14,4 @@ interface APIRequest {
             @Query("sortBy") sortBy: String,
             @Query("apiKey") apiKey: String
     ): APIRequest
-
-    //  @GET("https://newsapi.org/v2/everything?q=football&from=2020-10-21&to=2020-10-21&sortBy=publishedAt&apiKey=ae68088e70d04639b4950bdc9d546924")
-    //suspend fun getNews() : APIRequest
 }
