@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         to = dateForToday.convertToString()
 
         Log.i("frommmmmmmmm", from)
-        Log.i("frommmmmmmmm", to)
 
 
         viewModel.createAPIRequest(from, to)
