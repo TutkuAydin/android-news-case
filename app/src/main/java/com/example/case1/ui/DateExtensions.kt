@@ -1,4 +1,4 @@
-package com.example.case1
+package com.example.case1.ui
 
 import java.text.SimpleDateFormat
 import java.util.*
