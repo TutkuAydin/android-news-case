@@ -1,4 +1,4 @@
-package com.example.case1
+package com.example.case1.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.case1.api.Article
+import com.example.case1.R
+import com.example.case1.domain.models.Article
 
 class NewsAdapter(
         private var articleList: List<Article>
@@ -37,7 +38,7 @@ class NewsAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.list_layout, parent, false)
         return ViewHolder(v)
     }
