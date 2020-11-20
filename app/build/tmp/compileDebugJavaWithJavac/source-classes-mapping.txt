@@ -1,0 +1,4 @@
+com/example/case1/DataBindingTriggerClass.java
+ com.example.case1.DataBindingTriggerClass
+com/example/case1/BuildConfig.java
+ com.example.case1.BuildConfig
