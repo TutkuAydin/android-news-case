@@ -1,31 +1,33 @@
 version: 2
+references:
+  ## Gradle Cache
+  gradle_cache_key: &gradle_cache_key
+    key: jars-{{ checksum "build.gradle.kts" }}-{{ checksum  "app/build.gradle.kts" }}
+  gradle_cache_path: &gradle_cache_path
+    paths:
+      - ~/.gradle
+  restore_gradle_cache: &restore_gradle_cache
+    restore_cache:
+      <<: *gradle_cache_key
+  save_gradle_cache: &save_gradle_cache
+    save_cache:
+      <<: *gradle_cache_key
+      <<: *gradle_cache_path
+
 jobs:
-  build:
-    working_directory: ~/code
+  build: # This is our first job.
     docker:
-      - image: circleci/android:api-25-alpha
-    environment:
-      JVM_OPTS: -Xmx3200m
+      - image: circleci/android:api-30
+    # Steps are a list of commands to run inside the docker container above.
     steps:
-      - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      #      - run:
-      #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
-      #         command: sudo chmod +x ./gradlew
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Run Tests
-          command: ./gradlew lint test
-      - store_artifacts:
-          path: app/build/reports
-          destination: reports
-      - store_test_results:
-          path: app/build/test-results
-          
+      - checkout # this pulls code down from GitHub
+      - run: chmod 777 gradlew
+      - *restore_gradle_cache
+      - run: ./gradlew androidDependencies
+      - *save_gradle_cache
+      - run: ./gradlew build
+workflows:
+  version: 2
+  build:
+    jobs: # and here we list the jobs we are going to run.
+      - build
