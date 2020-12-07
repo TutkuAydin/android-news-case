@@ -32,7 +32,7 @@ android {
         jvmTarget = "1.8"
     }
     androidExtensions {
-        isExperimental=true
+        isExperimental = true
     }
     dataBinding {
         isEnabled = true
@@ -66,10 +66,17 @@ dependencies {
     //LiveData
     implementation(Dependence.liveData)
 
+    // Test
     testImplementation(Dependence.junit)
     androidTestImplementation(Dependence.junitx)
     androidTestImplementation(Dependence.espresso)
+
+    //TruthTest
+    testImplementation(Dependence.truth)
+    androidTestImplementation(Dependence.truthAndroid)
+
 }
+
 
 
 

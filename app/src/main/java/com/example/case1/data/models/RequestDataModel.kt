@@ -8,5 +8,5 @@ class RequestDataModel(
     @SerializedName("totalResults")
     val totalResults: Int,
     @SerializedName("articles")
-    val reports: ArrayList<ArticleDataModel>?
+    val reports: ArrayList<ArticleDataModel>
 )

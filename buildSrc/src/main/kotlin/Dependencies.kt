@@ -13,6 +13,8 @@ object Versions {
     const val junit = "4.+"
     const val junitx = "1.1.1"
     const val espresso = "3.2.0"
+    const val truth = "0.40"
+
 }
 
 object Dependence {
@@ -43,4 +45,8 @@ object Dependence {
     const val junitx = "androidx.test.ext:junit:${Versions.junitx}"
 
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+
+    const val truth = "com.google.truth:truth:${Versions.truth}"
+    const val truthAndroid = "com.google.truth:truth:${Versions.truth}"
+
 }

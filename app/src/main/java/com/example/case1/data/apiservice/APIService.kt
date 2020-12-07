@@ -7,10 +7,9 @@ import retrofit2.http.Query
 import java.util.*
 
 interface APIService {
-
     @GET("https://newsapi.org/v2/everything")
     fun getNews(
-        @Query("from") from: Date,
-        @Query("to") to: Date
+        @Query("from") from: Date?,
+        @Query("to") to: Date?
     ): Call<RequestDataModel>
 }
