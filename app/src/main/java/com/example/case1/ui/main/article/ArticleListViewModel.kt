@@ -1,4 +1,4 @@
-package com.example.case1.ui.main
+package com.example.case1.ui.main.article
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +9,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
 
-class MainViewModel : ViewModel() {
+class ArticleListViewModel : ViewModel() {
     private val articleUseCase = GetArticles()
     var newsList = MutableLiveData<List<Article>>()
 

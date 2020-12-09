@@ -1,26 +1,25 @@
-package com.example.case1.ui.main
+package com.example.case1.ui.main.article
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.case1.R
 import com.example.case1.domain.models.Article
 
+
 class NewsRecyclerViewAdapter(
-    private var articleList: List<Article>
+    private val articleList: List<Article>,
+    private val clickListener: (Article) -> Unit
 ) : RecyclerView.Adapter<ArticleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_news, parent, false)
-        return ArticleViewHolder(v)
+        return ArticleViewHolder(v, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -32,17 +31,16 @@ class NewsRecyclerViewAdapter(
     }
 }
 
-class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ArticleViewHolder(itemView: View, private val clickListener: (Article) -> Unit) :
+    RecyclerView.ViewHolder(itemView) {
 
     private val textTitle = itemView.findViewById(R.id.textViewNewsTitle) as TextView
     private val newsImage = itemView.findViewById(R.id.imageViewNews) as ImageView
     private val textInfo = itemView.findViewById(R.id.textViewNewsInfo) as TextView
 
     fun bind(article: Article) {
-        itemView.setOnClickListener { v: View ->
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(article.url)
-            startActivity(itemView.context, intent, null)
+        itemView.setOnClickListener {
+            clickListener.invoke(article)
         }
         textTitle.text = article.title
 
@@ -52,3 +50,4 @@ class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         textInfo.text = article.description
     }
 }
+

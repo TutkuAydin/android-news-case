@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
+    id("androidx.navigation.safeargs")
 }
 android {
     compileSdkVersion(30)
@@ -66,15 +67,24 @@ dependencies {
     //LiveData
     implementation(Dependence.liveData)
 
-    // Test
-    testImplementation(Dependence.junit)
-    androidTestImplementation(Dependence.junitx)
-    androidTestImplementation(Dependence.espresso)
-
     //TruthTest
     testImplementation(Dependence.truth)
     androidTestImplementation(Dependence.truthAndroid)
 
+    //NavigationComponent
+    implementation(Dependence.navigationFragment)
+    implementation(Dependence.navigationUi)
+
+    //NavigationTest
+    androidTestImplementation(Dependence.navigationTest)
+
+    // androidxFragment
+    implementation(Dependence.androidxFragment)
+
+    // Test
+    testImplementation(Dependence.junit)
+    androidTestImplementation(Dependence.junitx)
+    androidTestImplementation(Dependence.espresso)
 }
 
 

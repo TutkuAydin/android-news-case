@@ -13,8 +13,9 @@ object Versions {
     const val junit = "4.+"
     const val junitx = "1.1.1"
     const val espresso = "3.2.0"
-    const val truth = "0.40"
-
+    const val truth = "1.1"
+    const val navigation = "2.3.2"
+    const val fragment = "1.2.5"
 }
 
 object Dependence {
@@ -49,4 +50,10 @@ object Dependence {
     const val truth = "com.google.truth:truth:${Versions.truth}"
     const val truthAndroid = "com.google.truth:truth:${Versions.truth}"
 
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    const val navigationTest = "androidx.navigation:navigation-testing:${Versions.navigation}"
+
+    const val androidxFragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
 }
