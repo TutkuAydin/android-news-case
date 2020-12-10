@@ -1,21 +1,17 @@
 package com.example.case1.ui.main.article
 
 import android.app.DatePickerDialog
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.case1.R
 import com.example.case1.addition.convertToDate
+import com.example.case1.ui.main.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import java.util.*
 
-class ArticleListFragment : Fragment() {
+class ArticleListFragment : BaseFragment() {
 
     var from: Date = Date()
     var to: Date = Date()
@@ -24,19 +20,13 @@ class ArticleListFragment : Fragment() {
         ViewModelProvider(this).get(ArticleListViewModel::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_article_list, container, false)
-        return view
+    override fun getLayoutId(): Int {
+        return R.layout.fragment_article_list
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initViews() {
         pickerCalenderButton.setOnClickListener {
-            chooseDate()
+            datePicker()
         }
         viewModel.getArticlesInfo(from, to)
 
@@ -56,7 +46,7 @@ class ArticleListFragment : Fragment() {
         })
     }
 
-    private fun chooseDate() {
+    override fun datePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -83,4 +73,5 @@ class ArticleListFragment : Fragment() {
             }
         datePickerDialog?.show()
     }
+
 }
