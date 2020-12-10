@@ -18,13 +18,9 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (savedInstanceState == null)
-            initViews()
+        initViews()
     }
 
     protected abstract fun getLayoutId(): Int
     protected abstract fun initViews()
-    protected open fun datePicker() = Unit
-
-
 }

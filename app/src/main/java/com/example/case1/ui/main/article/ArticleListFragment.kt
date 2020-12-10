@@ -46,7 +46,7 @@ class ArticleListFragment : BaseFragment() {
         })
     }
 
-    override fun datePicker() {
+    private fun datePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -73,5 +73,4 @@ class ArticleListFragment : BaseFragment() {
             }
         datePickerDialog?.show()
     }
-
 }
