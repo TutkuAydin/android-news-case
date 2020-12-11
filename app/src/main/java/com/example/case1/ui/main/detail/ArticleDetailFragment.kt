@@ -11,6 +11,7 @@ class ArticleDetailFragment : BaseFragment() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_article_details
     }
+
     override fun initViews() {
         webViewArticle.loadUrl(args.article.url.toString())
     }
