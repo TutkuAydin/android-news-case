@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/articleList">
-
     <fragment
         android:id="@+id/articleList"
         android:name="com.example.case1.ui.main.article.ArticleListFragment"
@@ -13,6 +12,9 @@
         <action
             android:id="@+id/articleDetails"
             app:destination="@id/fragmentArticleDetails" />
+        <action
+            android:id="@+id/dialogImage"
+            app:destination="@id/dialogImagePopup" />
     </fragment>
     <fragment
         android:id="@+id/fragmentArticleDetails"
@@ -24,4 +26,13 @@
             app:argType="com.example.case1.domain.models.Article"
             app:nullable="false" />
     </fragment>
+    <dialog
+        android:id="@+id/dialogImagePopup"
+        android:name="com.example.case1.ui.main.dialog.ImageDialogFragment"
+        android:label="dialogImage">
+        <argument
+            android:name="article"
+            app:argType="com.example.case1.domain.models.Article"
+            app:nullable="false" />
+    </dialog>
 </navigation>

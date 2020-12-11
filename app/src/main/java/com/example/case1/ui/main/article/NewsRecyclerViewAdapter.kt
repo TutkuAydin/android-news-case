@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.case1.R
 import com.example.case1.domain.models.Article
+import kotlinx.android.synthetic.main.recycler_item_news.view.*
 
 
 class NewsRecyclerViewAdapter(
     private val articleList: List<Article>,
-    private val clickListener: (Article) -> Unit
+    private val clickListener: OnClickListener
 ) : RecyclerView.Adapter<ArticleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -31,7 +32,7 @@ class NewsRecyclerViewAdapter(
     }
 }
 
-class ArticleViewHolder(itemView: View, private val clickListener: (Article) -> Unit) :
+class ArticleViewHolder(itemView: View, private val clickListener: OnClickListener) :
     RecyclerView.ViewHolder(itemView) {
 
     private val textTitle = itemView.findViewById(R.id.textViewNewsTitle) as TextView
@@ -39,14 +40,18 @@ class ArticleViewHolder(itemView: View, private val clickListener: (Article) -> 
     private val textInfo = itemView.findViewById(R.id.textViewNewsInfo) as TextView
 
     fun bind(article: Article) {
-        itemView.setOnClickListener {
-            clickListener.invoke(article)
+        itemView.textViewNewsTitle.setOnClickListener {
+            clickListener.onItemClick(article)
+        }
+        itemView.imageViewNews.setOnClickListener {
+            clickListener.onImageClick(article)
         }
         textTitle.text = article.title
 
         Glide.with(newsImage) //nerede kullanacağız
             .load(article.urlToImage) //neyi yükleyeceğiz
             .into(newsImage) //nereye yükleyeceğiz
+
         textInfo.text = article.description
     }
 }

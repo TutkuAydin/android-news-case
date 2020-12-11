@@ -7,11 +7,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.case1.R
 import com.example.case1.addition.convertToDate
+import com.example.case1.domain.models.Article
 import com.example.case1.ui.main.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import java.util.*
 
-class ArticleListFragment : BaseFragment() {
+
+class ArticleListFragment : BaseFragment(),
+    OnClickListener {
 
     var from: Date = Date()
     var to: Date = Date()
@@ -25,6 +28,7 @@ class ArticleListFragment : BaseFragment() {
     }
 
     override fun initViews() {
+
         pickerCalenderButton.setOnClickListener {
             datePicker()
         }
@@ -35,13 +39,7 @@ class ArticleListFragment : BaseFragment() {
 
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
             val adapter =
-                NewsRecyclerViewAdapter(it) { article ->
-                    findNavController().navigate(
-                        ArticleListFragmentDirections.articleDetails(
-                            article
-                        )
-                    )
-                }
+                NewsRecyclerViewAdapter(it, this@ArticleListFragment)
             recyclerViewArticle.adapter = adapter
         })
     }
@@ -72,5 +70,21 @@ class ArticleListFragment : BaseFragment() {
                 )
             }
         datePickerDialog?.show()
+    }
+
+    override fun onItemClick(article: Article) {
+        findNavController().navigate(
+            ArticleListFragmentDirections.articleDetails(
+                article
+            )
+        )
+    }
+
+    override fun onImageClick(article: Article) {
+        findNavController().navigate(
+            ArticleListFragmentDirections.dialogImage(
+                article
+            )
+        )
     }
 }
