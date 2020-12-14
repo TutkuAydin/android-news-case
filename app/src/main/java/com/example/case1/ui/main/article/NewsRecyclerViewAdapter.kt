@@ -48,11 +48,10 @@ class ArticleViewHolder(itemView: View, private val clickListener: OnClickListen
         }
         textTitle.text = article.title
 
-        Glide.with(newsImage) //nerede kullanacağız
-            .load(article.urlToImage) //neyi yükleyeceğiz
-            .into(newsImage) //nereye yükleyeceğiz
+        Glide.with(newsImage)
+            .load(article.imageUrl)
+            .into(newsImage)
 
         textInfo.text = article.description
     }
 }
-

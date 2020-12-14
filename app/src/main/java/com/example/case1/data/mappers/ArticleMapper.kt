@@ -9,7 +9,7 @@ class ArticleMapper {
             title = dataModel.title ?: "",
             description = dataModel.description ?: "",
             url = dataModel.url ?: "",
-            urlToImage = dataModel.urlToImage ?: ""
+            imageUrl = dataModel.imageUrl ?: ""
         )
     }
 }

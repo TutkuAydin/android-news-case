@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class ArticleListViewModel : ViewModel() {
+
     private val articleUseCase = GetArticles()
     var newsList = MutableLiveData<List<Article>>()
 

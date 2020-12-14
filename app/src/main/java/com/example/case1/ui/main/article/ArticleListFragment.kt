@@ -13,8 +13,7 @@ import kotlinx.android.synthetic.main.fragment_article_list.*
 import java.util.*
 
 
-class ArticleListFragment : BaseFragment(),
-    OnClickListener {
+class ArticleListFragment : BaseFragment(), OnClickListener {
 
     var from: Date = Date()
     var to: Date = Date()

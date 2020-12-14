@@ -6,6 +6,7 @@ import com.example.case1.ui.main.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_article_details.*
 
 class ArticleDetailFragment : BaseFragment() {
+
     private val args: ArticleDetailFragmentArgs by navArgs()
 
     override fun getLayoutId(): Int {

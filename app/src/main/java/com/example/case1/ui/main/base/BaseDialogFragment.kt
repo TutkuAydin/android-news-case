@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 
 abstract class BaseDialogFragment : DialogFragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,7 +20,7 @@ abstract class BaseDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        dialogStyle()
+        setDialogStyle()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,5 +30,5 @@ abstract class BaseDialogFragment : DialogFragment() {
 
     protected abstract fun getLayoutId(): Int
     protected abstract fun initViews()
-    protected abstract fun dialogStyle()
+    protected abstract fun setDialogStyle()
 }

@@ -15,8 +15,10 @@
     </style>
 
     <style name="Theme.AppCompat.Light.Dialog.Alert.fullWidth">
+
         <item name="windowFixedWidthMajor">100%</item>
         <item name="windowFixedWidthMinor">100%</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+
     </style>
 </resources>

@@ -8,6 +8,7 @@ import com.example.case1.ui.main.detail.ArticleDetailFragmentArgs
 import kotlinx.android.synthetic.main.fragment_image_dialog.*
 
 class ImageDialogFragment : BaseDialogFragment() {
+
     private val args: ArticleDetailFragmentArgs by navArgs()
 
     override fun getLayoutId(): Int {
@@ -15,12 +16,12 @@ class ImageDialogFragment : BaseDialogFragment() {
     }
 
     override fun initViews() {
-        Glide.with(imageViewPopup) //nerede kullanacağız
-            .load(args.article.urlToImage) //neyi yükleyeceğiz
-            .into(imageViewPopup) //nereye yükleyeceğiz
+        Glide.with(imageViewPopup)
+            .load(args.article.imageUrl)
+            .into(imageViewPopup)
     }
 
-    override fun dialogStyle() {
+    override fun setDialogStyle() {
         setStyle(STYLE_NO_FRAME, R.style.Theme_AppCompat_Light_Dialog_Alert_fullWidth)
     }
 }

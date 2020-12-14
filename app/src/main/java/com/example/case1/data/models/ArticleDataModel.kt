@@ -14,7 +14,7 @@ class ArticleDataModel(
     @SerializedName("url")
     val url: String?,
     @SerializedName("urlToImage")
-    val urlToImage: String?,
+    val imageUrl: String?,
     @SerializedName("publishedAt")
     val publishedAt: String?,
     @SerializedName("content")
