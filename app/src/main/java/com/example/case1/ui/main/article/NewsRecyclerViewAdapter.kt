@@ -1,13 +1,10 @@
 package com.example.case1.ui.main.article
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.case1.R
+import com.example.case1.databinding.RecyclerItemNewsBinding
 import com.example.case1.domain.models.Article
 import kotlinx.android.synthetic.main.recycler_item_news.view.*
 
@@ -18,9 +15,9 @@ class NewsRecyclerViewAdapter(
 ) : RecyclerView.Adapter<ArticleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_item_news, parent, false)
-        return ArticleViewHolder(v, clickListener)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = RecyclerItemNewsBinding.inflate(inflater, parent, false)
+        return ArticleViewHolder(binding, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -32,12 +29,15 @@ class NewsRecyclerViewAdapter(
     }
 }
 
-class ArticleViewHolder(itemView: View, private val clickListener: OnClickListener) :
-    RecyclerView.ViewHolder(itemView) {
+class ArticleViewHolder(
+    binding: RecyclerItemNewsBinding,
+    private val clickListener: OnClickListener
+) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    private val textTitle = itemView.findViewById(R.id.textViewNewsTitle) as TextView
-    private val newsImage = itemView.findViewById(R.id.imageViewNews) as ImageView
-    private val textInfo = itemView.findViewById(R.id.textViewNewsInfo) as TextView
+    private val textTitle = binding.textViewNewsTitle
+    private val newsImage = binding.imageViewNews
+    private val textInfo = binding.textViewNewsInfo
 
     fun bind(article: Article) {
         itemView.textViewNewsTitle.setOnClickListener {
