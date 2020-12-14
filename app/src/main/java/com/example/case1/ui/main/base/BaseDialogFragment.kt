@@ -5,17 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.viewbinding.ViewBinding
 
-abstract class BaseDialogFragment : DialogFragment() {
+abstract class BaseDialogFragment< Binding : ViewBinding> : DialogFragment() {
+
+    var binding: Binding? = null
+    private val _binding get() = binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(getLayoutId(), container, false).apply {
+        binding = getViewBinding().apply {
             dialog?.setCanceledOnTouchOutside(true)
         }
+        return _binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +33,12 @@ abstract class BaseDialogFragment : DialogFragment() {
         initViews()
     }
 
-    protected abstract fun getLayoutId(): Int
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+    protected abstract fun getViewBinding(): Binding
     protected abstract fun initViews()
     protected abstract fun setDialogStyle()
 }

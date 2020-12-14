@@ -35,8 +35,8 @@ android {
     androidExtensions {
         isExperimental = true
     }
-    dataBinding {
-        isEnabled = true
+    buildFeatures{
+        viewBinding=true
     }
 }
 dependencies {

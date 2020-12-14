@@ -5,15 +5,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.case1.R
 import com.example.case1.addition.convertToDate
+import com.example.case1.databinding.FragmentArticleListBinding
 import com.example.case1.domain.models.Article
 import com.example.case1.ui.main.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_article_list.*
 import java.util.*
 
-
-class ArticleListFragment : BaseFragment(), OnClickListener {
+class ArticleListFragment : BaseFragment<FragmentArticleListBinding>(), OnClickListener {
 
     var from: Date = Date()
     var to: Date = Date()
@@ -22,15 +21,14 @@ class ArticleListFragment : BaseFragment(), OnClickListener {
         ViewModelProvider(this).get(ArticleListViewModel::class.java)
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_article_list
-    }
+    override fun getViewBinding() = FragmentArticleListBinding.inflate(layoutInflater)
 
     override fun initViews() {
 
-        pickerCalenderButton.setOnClickListener {
+        binding?.pickerCalenderButton?.setOnClickListener {
             datePicker()
         }
+
         viewModel.getArticlesInfo(from, to)
 
         recyclerViewArticle.layoutManager =
