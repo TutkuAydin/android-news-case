@@ -19,6 +19,10 @@
             android:id="@+id/dialogImage"
             app:destination="@id/dialogImagePopup" />
 
+        <action
+            android:id="@+id/backupArticleDetails"
+            app:destination="@id/fragmentArticleBackup" />
+
     </fragment>
 
     <fragment
@@ -43,6 +47,20 @@
             android:name="article"
             app:argType="com.example.case1.domain.models.Article"
             app:nullable="false" />
-
     </dialog>
+
+    <fragment
+        android:id="@+id/fragmentArticleBackup"
+        android:name="com.example.case1.ui.main.backup.ArticleBackupFragment"
+        android:label="fragmentBackupArticleDetails"
+        tools:layout="@layout/fragment_article_backup">
+        
+        <action
+            android:id="@+id/articleDetails"
+            app:destination="@id/fragmentArticleDetails" />
+
+        <action
+            android:id="@+id/dialogImage"
+            app:destination="@id/dialogImagePopup" />
+    </fragment>
 </navigation>

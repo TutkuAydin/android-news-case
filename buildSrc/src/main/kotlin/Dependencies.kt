@@ -4,6 +4,7 @@ object Versions {
     const val androidCompat = "1.1.0"
     const val androidMeterial = "1.1.0"
     const val androidConstraintLayout = "1.1.3"
+    const val lifecycle = "2.2.0"
     const val retrofit = "2.9.0"
     const val glide = "4.11.0"
     const val coroutinesCore = "1.3.7"
@@ -16,6 +17,7 @@ object Versions {
     const val truth = "1.1"
     const val navigation = "2.3.2"
     const val fragment = "1.2.5"
+    const val room = "2.2.5"
 }
 
 object Dependence {
@@ -26,6 +28,8 @@ object Dependence {
     const val androidMeterial = "com.google.android.material:material:${Versions.androidMeterial}"
     const val androidConstraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.androidConstraintLayout}"
+
+    const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -56,4 +60,8 @@ object Dependence {
     const val navigationTest = "androidx.navigation:navigation-testing:${Versions.navigation}"
 
     const val androidxFragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+
+    const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomAndroid = "androidx.room:room-ktx:${Versions.room}"
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment< Binding : ViewBinding> : Fragment() {
+abstract class BaseFragment<Binding : ViewBinding> : Fragment() {
 
     var binding: Binding? = null
     private val _binding get() = binding!!
@@ -23,7 +23,7 @@ abstract class BaseFragment< Binding : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
+        return initViews()
     }
 
     override fun onDestroyView() {

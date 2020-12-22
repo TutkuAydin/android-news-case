@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
+    id("kotlin-kapt")
     id("androidx.navigation.safeargs")
 }
 android {
@@ -49,6 +50,9 @@ dependencies {
     implementation(Dependence.androidMeterial)
     implementation(Dependence.androidConstraintLayout)
 
+    //Lifecycle
+    implementation(Dependence.lifecycle)
+
     //Retrofit
     implementation(Dependence.retrofit)
     implementation(Dependence.gsonConverter)
@@ -80,6 +84,11 @@ dependencies {
 
     // androidxFragment
     implementation(Dependence.androidxFragment)
+
+    //Room
+    implementation(Dependence.roomRuntime)
+    kapt(Dependence.roomCompiler)
+    implementation(Dependence.roomAndroid)
 
     // Test
     testImplementation(Dependence.junit)

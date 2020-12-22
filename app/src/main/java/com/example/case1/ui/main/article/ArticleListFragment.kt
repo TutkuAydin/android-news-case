@@ -1,15 +1,15 @@
 package com.example.case1.ui.main.article
 
 import android.app.DatePickerDialog
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.case1.addition.ViewModelFactory
 import com.example.case1.addition.convertToDate
 import com.example.case1.databinding.FragmentArticleListBinding
 import com.example.case1.domain.models.Article
 import com.example.case1.ui.main.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_article_list.*
 import java.util.*
 
 class ArticleListFragment : BaseFragment<FragmentArticleListBinding>(), OnClickListener {
@@ -17,8 +17,10 @@ class ArticleListFragment : BaseFragment<FragmentArticleListBinding>(), OnClickL
     var from: Date = Date()
     var to: Date = Date()
 
-    private val viewModel: ArticleListViewModel by lazy {
-        ViewModelProvider(this).get(ArticleListViewModel::class.java)
+    private val viewModel: ArticleListViewModel by viewModels {
+        ViewModelFactory(
+            requireContext()
+        )
     }
 
     override fun getViewBinding() = FragmentArticleListBinding.inflate(layoutInflater)
@@ -29,15 +31,21 @@ class ArticleListFragment : BaseFragment<FragmentArticleListBinding>(), OnClickL
             datePicker()
         }
 
+        binding?.imageButtonShowDatabase?.setOnClickListener {
+            findNavController().navigate(
+                ArticleListFragmentDirections.backupArticleDetails()
+            )
+        }
+
         viewModel.getArticlesInfo(from, to)
 
-        recyclerViewArticle.layoutManager =
+        binding?.recyclerViewArticle?.layoutManager =
             LinearLayoutManager(context)
 
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
             val adapter =
                 NewsRecyclerViewAdapter(it, this@ArticleListFragment)
-            recyclerViewArticle.adapter = adapter
+            binding?.recyclerViewArticle?.adapter = adapter
         })
     }
 

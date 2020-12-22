@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.case1.databinding.RecyclerItemNewsBinding
 import com.example.case1.domain.models.Article
-import kotlinx.android.synthetic.main.recycler_item_news.view.*
-
 
 class NewsRecyclerViewAdapter(
     private val articleList: List<Article>,
@@ -40,10 +38,10 @@ class ArticleViewHolder(
     private val textInfo = binding.textViewNewsInfo
 
     fun bind(article: Article) {
-        itemView.textViewNewsTitle.setOnClickListener {
+        textTitle.setOnClickListener {
             clickListener.onItemClick(article)
         }
-        itemView.imageViewNews.setOnClickListener {
+        newsImage.setOnClickListener {
             clickListener.onImageClick(article)
         }
         textTitle.text = article.title
