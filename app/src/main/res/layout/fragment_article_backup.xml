@@ -19,7 +19,7 @@
         <ImageButton
             android:id="@+id/imageButtonDeleteAll"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/button_delete"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="20dp" />
