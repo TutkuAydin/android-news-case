@@ -1,18 +1,15 @@
 package com.example.case1.data.repo
 
-import android.content.Context
 import com.example.case1.data.backup.dao.ArticleDao
-import com.example.case1.data.backup.database.AppDatabase
 import com.example.case1.data.backup.mappers.ArticleEntityMapper
 import com.example.case1.domain.models.Article
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalRepo(private val context: Context) {
+@Singleton
+class LocalRepo @Inject constructor(private val dao: ArticleDao) {
 
     private val articleEntityMapper = ArticleEntityMapper()
-
-    private val dao: ArticleDao by lazy {
-        AppDatabase.getDatabase(context).articleDao()
-    }
 
     fun getArticles(): List<Article> {
         return dao.getAllArticles().map {

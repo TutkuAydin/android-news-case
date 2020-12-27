@@ -6,10 +6,12 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 private const val BASE_URL = "https://newsapi.org"
 private const val API_KEY = "ae68088e70d04639b4950bdc9d546924"
 
+@Singleton
 object RetrofitCreator {
 
     private val retrofit: Retrofit by lazy {

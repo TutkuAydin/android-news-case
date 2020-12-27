@@ -5,8 +5,11 @@ import com.example.case1.data.apiservice.APIService
 import com.example.case1.data.mappers.ArticleMapper
 import com.example.case1.domain.models.Article
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RemoteRepo {
+@Singleton
+class RemoteRepo @Inject constructor(){
 
     private val apiService: APIService by lazy {
         RetrofitCreator.getService(APIService::class.java)

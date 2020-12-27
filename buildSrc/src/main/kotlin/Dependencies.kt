@@ -18,6 +18,7 @@ object Versions {
     const val navigation = "2.3.2"
     const val fragment = "1.2.5"
     const val room = "2.2.5"
+    const val hiltDagger = "2.28-alpha"
 }
 
 object Dependence {
@@ -64,4 +65,7 @@ object Dependence {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomAndroid = "androidx.room:room-ktx:${Versions.room}"
+
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hiltDagger}"
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltDagger}"
 }

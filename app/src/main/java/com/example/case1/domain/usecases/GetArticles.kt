@@ -1,13 +1,11 @@
 package com.example.case1.domain.usecases
 
-import android.content.Context
 import com.example.case1.domain.models.Article
 import com.example.case1.domain.repositories.ArticlesRepository
 import java.util.*
+import javax.inject.Inject
 
-class GetArticles(context: Context) : BaseUseCase<Article> {
-
-    private val repository = ArticlesRepository(context)
+class GetArticles @Inject constructor(private val repository: ArticlesRepository) : BaseUseCase<Article> {
 
     override fun execute(
         from: Date,

@@ -4,22 +4,26 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.case1.addition.ViewModelFactory
 import com.example.case1.databinding.FragmentArticleBackupBinding
+import com.example.case1.di.ViewModelFactory
 import com.example.case1.domain.models.Article
 import com.example.case1.ui.main.article.ArticleListFragmentDirections
 import com.example.case1.ui.main.article.ArticleListViewModel
 import com.example.case1.ui.main.article.NewsRecyclerViewAdapter
 import com.example.case1.ui.main.article.OnClickListener
 import com.example.case1.ui.main.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ArticleBackupFragment :
     BaseFragment<FragmentArticleBackupBinding>(), OnClickListener {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     private val viewModel: ArticleListViewModel by viewModels {
-        ViewModelFactory(
-            requireContext()
-        )
+        viewModelFactory
     }
 
     override fun getViewBinding() = FragmentArticleBackupBinding.inflate(layoutInflater)

@@ -4,6 +4,7 @@ plugins {
     kotlin("android.extensions")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs")
+    id("dagger.hilt.android.plugin")
 }
 android {
     compileSdkVersion(30)
@@ -89,6 +90,10 @@ dependencies {
     implementation(Dependence.roomRuntime)
     kapt(Dependence.roomCompiler)
     implementation(Dependence.roomAndroid)
+
+    //Hilt
+    implementation(Dependence.hilt)
+    kapt(Dependence.hiltCompiler)
 
     // Test
     testImplementation(Dependence.junit)

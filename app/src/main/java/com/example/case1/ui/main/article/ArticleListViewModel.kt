@@ -1,6 +1,5 @@
 package com.example.case1.ui.main.article
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.case1.domain.models.Article
@@ -9,10 +8,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
-class ArticleListViewModel(context: Context) : ViewModel() {
+class ArticleListViewModel @Inject constructor(private val articleUseCase:GetArticles) : ViewModel() {
 
-    private val articleUseCase = GetArticles(context)
     var newsList = MutableLiveData<List<Article>>()
     var newsListDatabase = MutableLiveData<List<Article>>()
 

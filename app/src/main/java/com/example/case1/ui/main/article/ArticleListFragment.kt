@@ -5,22 +5,26 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.case1.addition.ViewModelFactory
 import com.example.case1.addition.convertToDate
 import com.example.case1.databinding.FragmentArticleListBinding
+import com.example.case1.di.ViewModelFactory
 import com.example.case1.domain.models.Article
 import com.example.case1.ui.main.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ArticleListFragment : BaseFragment<FragmentArticleListBinding>(), OnClickListener {
 
     var from: Date = Date()
     var to: Date = Date()
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     private val viewModel: ArticleListViewModel by viewModels {
-        ViewModelFactory(
-            requireContext()
-        )
+        viewModelFactory
     }
 
     override fun getViewBinding() = FragmentArticleListBinding.inflate(layoutInflater)
